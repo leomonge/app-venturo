@@ -1,0 +1,22 @@
+<View style={styles.container}>
+      <Text
+      onPress={() => navigation.navigate('Registro2')}
+      >
+        Inicia Sesión
+      </Text>
+      <TextInput 
+        value={inputs.email}
+        onChangeText={subscribe('identifier')}
+        placeholder='Email'
+      />
+      <TextInput 
+        value={inputs.email}
+        onChangeText={subscribe('password')}
+        placeholder='Contraseña'
+        secureTextEntry={true}
+      />
+      <Button
+        title='Iniciar Sesión'
+        onPress={handleSubmit}
+      />
+    </View>

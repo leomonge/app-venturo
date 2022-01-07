@@ -7,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons"
 import IndexScreen from "./screens/IndexScreen"
 import LoginScreen from "./screens/LoginScreen"
 import RegistroScreen from "./screens/RegistroScreen"
+import LoginAbogadoScreen from "./screens/LoginAbogadoScreen"
 import RegistroAbogadoScreen from "./screens/RegistroAbogadoScreen"
 
 import PerfilScreen from "./screens/PerfilScreen"
@@ -17,9 +18,11 @@ const LoginStack= createStackNavigator({
   Inicio: IndexScreen,
   Login : LoginScreen,
   Registro: RegistroScreen,
-  Registro2: RegistroAbogadoScreen,
+  LoginAbogado: LoginAbogadoScreen,
+  RegistroAbogado: RegistroAbogadoScreen,
 }, {
-  initialRouteName: 'Inicio',
+  initialRouteName: 'Login',
+  headerMode: 'none'
 })
 
 const MenuStack= createBottomTabNavigator({
