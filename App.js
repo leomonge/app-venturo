@@ -21,7 +21,7 @@ const LoginStack= createStackNavigator({
   LoginAbogado: LoginAbogadoScreen,
   RegistroAbogado: RegistroAbogadoScreen,
 }, {
-  initialRouteName: 'Login',
+  initialRouteName: 'Registro',
   headerMode: 'none'
 })
 

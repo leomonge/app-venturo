@@ -1,11 +1,13 @@
-import React from 'react' 
-import { ScrollView, View, Text, StyleSheet, Button, TextInput, Alert, ImageBackground, Dimensions, Image } from 'react-native'
+import React, {useState} from 'react' 
+import { ScrollView, View, Text, StyleSheet, TextInput, Alert, ImageBackground, Dimensions, Image, TouchableOpacity } from 'react-native'
 import Checkbox from 'expo-checkbox'
 import useForm from '../hooks/useForm'
 
 const {width, height} = Dimensions.get('window')
 
 export default ({ navigation }) => {
+
+  const [isSelected, setSelection] = useState(false);
 
   const initialState = {
     "identifier": "",
@@ -60,8 +62,8 @@ export default ({ navigation }) => {
         <View style={{padding: 40}}>
           <Text style={{color: '#4632A1', fontSize: 34}}>Bienvenido</Text>
           <Text>
-            No tiene una cuenta? 
-            <Text style={{color: 'red', fontStyle: 'italic'}}> Regístrate</Text>
+            No tienes una cuenta? 
+            <Text style={{color: 'red', fontStyle: 'italic'}} onPress={()=>navigation.navigate('Registro')}> Regístrate</Text>
           </Text> 
          {/* Forms Input View */}
          <View style={{marginTop: 50}}>
@@ -69,7 +71,7 @@ export default ({ navigation }) => {
           <Text style={{color:'#6f6f6f'}}>Correo Electrónico</Text>
           <TextInput
               style={{borderBottomWidth: 1, borderColor: '#4632A1'}}
-              value={inputs.email}
+              value={inputs.identifier}
               onChangeText={subscribe('identifier')}
               placeholder='harvey.specter@gmail.com'
             />
@@ -89,13 +91,31 @@ export default ({ navigation }) => {
          <View style={styles.forgotPassView}>
           <View stye={{flex:1, marginLeft: -20}}>
             <View style={{flexDirection: 'row'}}>
-              <Checkbox value={true} color='#4632A1'/>
+              <Checkbox 
+                value={isSelected}
+                onValueChange={setSelection} 
+                color='#4632A1'
+                />
               <Text style={{color:'#8f9195'}}> Recordarme</Text>
             </View>
           </View>
+          {/*
           <View stye={{flex:1, marginRight: -20}}>
             <Text style={{color:'#8f9195'}}>Olvidaste tu Contraseña</Text>
           </View>
+          */}
+         </View>
+         {/* Login Button */}
+         <View 
+          style={{
+            height:100,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+         >
+           <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
+            <Text style={{color: '#fff', }}>Entrar</Text>
+           </TouchableOpacity>
          </View>
         </View>
       </View>
@@ -120,5 +140,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
     flexDirection: 'row',
     justifyContent: 'space-between'
+  },
+  loginBtn:{
+    alignSelf: 'center',
+    backgroundColor: '#4632A1',
+    width: width/2,
+    height: 45,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
